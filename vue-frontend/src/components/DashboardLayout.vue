@@ -1,4 +1,5 @@
 <template>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">E-Commerce</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,10 +12,16 @@
         <div class="position-sticky pt-3">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <router-link :to="{ name: 'barang.index' }" class="nav-link">Barang</router-link>
+              <router-link :to="{ name: 'barang.index' }" class="nav-link"><i class="bi bi-bag"></i> &nbsp;  Barang </router-link>
             </li>
             <li class="nav-item">
-              <!-- <router-link :to="{ name: 'admin.index' }" class="nav-link">Admin</router-link> -->
+              <router-link :to="{ name: 'transaksi.index' }" class="nav-link"><i class="bi bi-wallet"></i> &nbsp; Transaksi</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link :to="{ name: 'kritik.index' }" class="nav-link"><i class="bi bi-chat-left-dots"></i> &nbsp; Kritik dan Saran</router-link>
+            </li>
+            <li class="pointer" @click.prevent="logout" >
+              <i class="bi bi-box-arrow-left">&nbsp; Logout</i>
             </li>
           </ul>
         </div>
@@ -27,7 +34,31 @@
   </div>
 </template>
 <script>
-export default {};
+    import { useRouter } from 'vue-router'
+
+    export default {
+
+        setup() {
+
+            //inisialisasi vue router on Composition API
+            const router = useRouter();
+
+            //method login
+            function logout() {
+              localStorage.removeItem('token');
+                                                
+              router.push({
+                name: "login"
+              });
+            }
+
+            return {
+                logout
+            };
+
+        }
+
+    }
 </script>
 <style>
 body {
@@ -118,5 +149,12 @@ body {
 .form-control-dark:focus {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+.pointer{
+  cursor: pointer;
+  font: 'Lucida Sans';
+  font-weight: 500;
+  color: #E040FB;
 }
 </style>

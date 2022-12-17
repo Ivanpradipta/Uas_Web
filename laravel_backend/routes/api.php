@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('register', 'Api\AuthController@register');
 Route::post('login', 'Api\AuthController@login');
-// Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:api');
+
 
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('barang', 'Api\BarangController@index');
@@ -30,4 +30,12 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('barang', 'Api\BarangController@store');
     Route::put('barang/{id}', 'Api\BarangController@update');
     Route::delete('barang/{id}', 'Api\BarangController@destroy');
+
+    Route::get('kritik', 'Api\KritikController@index');
+    Route::get('kritik/{id}', 'Api\KritikController@show');
+    Route::post('kritik', 'Api\KritikController@store');
+    Route::put('kritik/{id}', 'Api\KritikController@update');
+    Route::delete('kritik/{id}', 'Api\KritikController@destroy');
+
+    Route::post('logout', 'Api\AuthController@logout');
 });

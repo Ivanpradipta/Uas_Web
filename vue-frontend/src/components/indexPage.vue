@@ -24,7 +24,9 @@
                 <div v-if="validation.password" class="mt-2 alert alert-danger">
                         {{ validation.password[0] }}
                     </div>
-
+                <!-- <div class="alert alert-success" role="alert">
+                Berhasil Login
+                </div> -->
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
             </form>
             <p><a href="/beranda">test</a></p>

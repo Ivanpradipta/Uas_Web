@@ -4,7 +4,7 @@
       <div class="col-md-12">
         <div class="card border-0 rounded shadow">
           <div class="card-body">
-            <h4>TAMBAH BARANG</h4>
+            <h4>KRITIK & SARAN</h4>
             <hr>
             <form @submit.prevent="store">
               <!-- <div class="form-group mb-3"> -->
@@ -16,35 +16,35 @@
                 <!-- </div> -->
               <!-- </div> -->
               <div class="form-group mb-3">
-                <label class="form-label">Nama Barang</label>
-                <input type="text" class="form-control" v-model="barang.nama_barang" placeholder="Masukkan nama barang" />
+                <label class="form-label">Kritik</label>
+                <input type="text" class="form-control" v-model="kritik.kritik" placeholder="Masukkan Kritikan Anda" />
                 <!-- validation -->
-                <div v-if="validation.nama_barang" class="mt-2 alert alert-danger">
-                  {{ validation.nama_barang[0] }}
+                <div v-if="validation.kritik" class="mt-2 alert alert-danger">
+                  {{ validation.kritik[0] }}
                 </div>
               </div>
               <div class="form-group mb-3">
-                <label for="content" class="form-label">Nama Kategori</label>
-                <input class="form-control" v-model="barang.nama_kategori" placeholder="Masukkan nama kategori" />
+                <label for="content" class="form-label">Saran</label>
+                <input type="text" class="form-control" v-model="kritik.saran" placeholder="Masukkan Saran Anda" />
                 <!-- validation -->
-                <div v-if="validation.nama_kategori" class="mt-2 alert alert-danger">
-                  {{ validation.nama_kategori[0] }}
+                <div v-if="validation.saran" class="mt-2 alert alert-danger">
+                  {{ validation.saran[0] }}
                 </div>
               </div>
               <div class="form-group mb-3">
-                <label for="content" class="form-label">Jumlah Barang</label>
-                <input class="form-control" type="number" v-model="barang.jumlah_barang" placeholder="Masukkan jumlah barang" />
+                <label for="content" class="form-label">Nama</label>
+                <input class="form-control" type="text" v-model="kritik.nama" placeholder="Masukkan Nama Anda" />
                 <!-- validation -->
-                <div v-if="validation.jumlah_barang" class="mt-2 alert alert-danger">
-                  {{ validation.jumlah_barang[0] }}
+                <div v-if="validation.nama" class="mt-2 alert alert-danger">
+                  {{ validation.nama[0] }}
                 </div>
               </div>
               <div class="form-group mb-3">
                 <label for="content" class="form-label">Harga</label>
-                <input class="form-control" type="number" v-model="barang.harga_barang" placeholder="Masukkan harga barang" />
+                <input class="form-control" type="text" v-model="kritik.email" placeholder="Masukkan Email Anda" />
                 <!-- validation -->
-                <div v-if="validation.harga_barang" class="mt-2 alert alert-danger">
-                  {{ validation.harga_barang[0] }}
+                <div v-if="validation.email" class="mt-2 alert alert-danger">
+                  {{ validation.email[0] }}
                 </div>
               </div>
               <button type="submit" class="btn btn-primary">SIMPAN</button>
@@ -62,12 +62,12 @@ import axios from "axios";
 export default {
   setup() {
     //state departemen
-    const barang = reactive({
+    const kritik = reactive({
       //gambar:"",
-      nama_barang: "",
-      nama_kategori: "",
-      jumlah_barang: "",
-      harga_barang: "",
+      kritik: "",
+      saran: "",
+      nama: "",
+      email: "",
     });
     //state validation
     const validation = ref([]);
@@ -76,22 +76,22 @@ export default {
     //method store
     function store() {
       //let gambar = barang.gambar;
-      let nama_barang = barang.nama_barang;
-      let nama_kategori = barang.nama_kategori;
-      let jumlah_barang = barang.jumlah_barang;
-      let harga_barang = barang.harga_barang;
+      let kritik = kritik.kritik;
+      let saran = kritik.saran;
+      let nama = kritik.nama;
+      let email = kritik.email;
       axios
         .post("http://localhost:8000/api/barang", {
           //gambar: gambar,
-          nama_barang: nama_barang,
-          nama_kategori: nama_kategori,
-          jumlah_barang: jumlah_barang,
-          harga_barang: harga_barang,
+          kritik: kritik,
+          saran: saran,
+          nama: nama,
+          email: email
         })
         .then(() => {
           //redirect ke post index
           router.push({
-            name: "admin.index",
+            name: "barang.index",
           });
         })
         .catch((error) => {
@@ -101,7 +101,7 @@ export default {
     }
     //return
     return {
-      barang,
+      kritik,
       validation,
       router,
       store,
@@ -109,4 +109,7 @@ export default {
   },
 };
 </script>
-<style></style>
+
+<style>
+
+</style>

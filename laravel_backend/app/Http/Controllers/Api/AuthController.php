@@ -76,15 +76,15 @@ class AuthController extends Controller
         ], 200);
     }
 
-    // public function logout(Request $request)
-    // {
-    //     $removeToken = $request->user()->tokens()->delete();
+    public function logout(Request $request)
+    {
+        $removeToken = $request->user()->tokens()->delete();
 
-    //     if($removeToken) {
-    //         return response()->json([
-    //             'success' => true,
-    //             'message' => 'Logout Success!',  
-    //         ]);
-    //     }
-    // }
+        if($removeToken) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Logout Success!',  
+            ]);
+        }
+    }
 }

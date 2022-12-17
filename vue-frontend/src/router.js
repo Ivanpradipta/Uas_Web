@@ -23,6 +23,18 @@ const routes = [
                 component: () =>
                 import('@/views/Barang/indexPage.vue'),
             },
+            {
+                path: "/Kritik",
+                name: "kritik.index",
+                component: () =>
+                import('@/views/Kritik/kritikPage.vue'),
+            },
+            {
+                path: "/transaksi",
+                name: "transaksi.index",
+                component: () =>
+                import('@/views/Transaksi/transaksiPage.vue'),
+            },
             
         ], 
     },
