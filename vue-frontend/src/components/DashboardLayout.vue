@@ -18,7 +18,10 @@
               <router-link :to="{ name: 'transaksi.index' }" class="nav-link"><i class="bi bi-wallet"></i> &nbsp; Transaksi</router-link>
             </li>
             <li class="nav-item">
-              <router-link :to="{ name: 'kritik.index' }" class="nav-link"><i class="bi bi-chat-left-dots"></i> &nbsp; Kritik dan Saran</router-link>
+              <router-link :to="{ name: 'kritik' }" class="nav-link"><i class="bi bi-chat-left-dots"></i> &nbsp; Kritik dan Saran</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link :to="{ name: 'user' }" class="nav-link"><i class="bi bi-person-circle"></i> &nbsp; Profile</router-link>
             </li>
             <li class="pointer" @click.prevent="logout" >
               <i class="bi bi-box-arrow-left">&nbsp; Logout</i>
@@ -46,7 +49,7 @@
             //method login
             function logout() {
               localStorage.removeItem('token');
-                                                
+                                                      
               router.push({
                 name: "login"
               });

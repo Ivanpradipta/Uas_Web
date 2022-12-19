@@ -15,7 +15,7 @@ class Kritik extends Model
     * @var array
     */
     protected $fillable = [
-        'kritik',
+        'critic',
         'saran',
         'nama',
         'email',

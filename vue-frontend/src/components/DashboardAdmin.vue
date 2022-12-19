@@ -17,6 +17,9 @@
             <li class="nav-item">
               <router-link :to="{ name: 'admin.index' }" class="nav-link">Admin</router-link>
             </li>
+            <li class="nav-item">
+              <router-link :to="{ name: 'kritik.index' }" class="nav-link">Kritik & Saran</router-link>
+            </li>
             <li class="pointer" @click="logout" >
               <i class="bi bi-box-arrow-left">&nbsp; Logout</i>
             </li>

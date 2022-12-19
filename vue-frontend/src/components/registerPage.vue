@@ -35,6 +35,10 @@
 
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Simpan</button>
             </form>
+            <br>
+            <!-- <div class="text-center">
+              <p>Sudah Memiliki Akun? <a href="login">Login</a></p>
+            </div> -->
             <hr class="my-4">
           </div>
         </div>

@@ -34,16 +34,6 @@ class KritikController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    // public function create()
-    // {
-    //     //
-    // }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -53,7 +43,7 @@ class KritikController extends Controller
     {
         $storeData = $request->all();
         $validate = Validator::make($storeData, [
-            'kritik' => 'required',
+            'critic' => 'required',
             'saran' => 'required',
             'nama' => 'required',
             'email' => 'required',
@@ -88,24 +78,6 @@ class KritikController extends Controller
         ], 404);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    // public function edit($id)
-    // {
-    //     //
-    // }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $kritik = Kritik::find($id);
@@ -118,7 +90,7 @@ class KritikController extends Controller
 
         $updateData = $request->all();
         $validate = Validator::make($updateData, [
-            'kritik' => 'required',
+            'critic' => 'required',
             'saran' => 'required',
             'nama' => 'required',
             'email' => 'required',
@@ -127,7 +99,7 @@ class KritikController extends Controller
         if($validate->fails())
             return response()->json(['message' => $validate->errors()], 400);
 
-        $kritik->kritik = $updateData['kritik'];
+        $kritik->critic = $updateData['critic'];
         $kritik->saran = $updateData['saran'];
         $kritik->nama = $updateData['nama'];
         $kritik->email = $updateData['email'];
@@ -162,7 +134,7 @@ class KritikController extends Controller
             ], 404);
         }
 
-        if($barang->delete()){
+        if($kritik->delete()){
             return response()->json([
                 'message' => 'Delete Kritik Success',
                 'data' => $kritik

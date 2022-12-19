@@ -24,8 +24,8 @@ const routes = [
                 import('@/views/Barang/indexPage.vue'),
             },
             {
-                path: "/Kritik",
-                name: "kritik.index",
+                path: "/kritik",
+                name: "kritik",
                 component: () =>
                 import('@/views/Kritik/kritikPage.vue'),
             },
@@ -34,6 +34,18 @@ const routes = [
                 name: "transaksi.index",
                 component: () =>
                 import('@/views/Transaksi/transaksiPage.vue'),
+            },
+            {
+                path: "/user",
+                name: "user",
+                component: () =>
+                import('@/views/User/userPage.vue'),
+            },
+            {
+                path: "/user/edit",
+                name: "user.edit",
+                component: () =>
+                import('@/views/User/editPage.vue'),
             },
             
         ], 
@@ -60,6 +72,12 @@ const routes = [
                 name: "barang.edit",
                 component: () =>
                 import('@/views/Barang/editPage.vue'),
+            },
+            {
+                path: "/admin",
+                name: "kritik.index",
+                component: () =>
+                import('@/views/Admin/adminKritik.vue'),
             },
         ],
     },

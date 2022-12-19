@@ -37,5 +37,9 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::put('kritik/{id}', 'Api\KritikController@update');
     Route::delete('kritik/{id}', 'Api\KritikController@destroy');
 
+    Route::get('user/{id}', 'Api\AuthController@show');
+    // Route::post('kritik', 'Api\KritikController@store');
+    Route::put('user/{id}', 'Api\AuthController@update');
+
     Route::post('logout', 'Api\AuthController@logout');
 });

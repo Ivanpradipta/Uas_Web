@@ -87,4 +87,52 @@ class AuthController extends Controller
             ]);
         }
     }
+
+    public function show($id)
+    {
+        $user = User::find($id);
+
+        if(!is_null($user)){
+            return response()->json([
+                'message' => 'Retrieve User Success',
+                'data' => $user
+            ], 200);
+        }
+
+        return response()->json([
+            'message' => 'User Not Found'
+        ], 404);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::find($id);
+        if(is_null($user)){
+            return response()->json([
+                'message' => 'User Not Found',
+                'data' => null
+            ], 404);
+        }
+
+        $updateData = $request->all();
+        $validate = Validator::make($updateData, [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        $updateData['password'] = bcrypt($request->password);
+        if($validate->fails())
+            return response()->json(['message' => $validate->errors()], 400);
+
+        $user->name = $updateData['name'];
+        $user->email = $updateData['email'];
+        $user->password = $updateData['password'];
+        
+        if($user->save()){
+            return response()->json([
+                'message' => 'Update User Success',
+                'data' => $user
+            ], 200);
+        }
+    }
 }

@@ -1,11 +1,12 @@
 <template>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">KRITIK & SARAN</h1>
+    </div>
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-12">
         <div class="card border-0 rounded shadow">
           <div class="card-body">
-            <h4>KRITIK & SARAN</h4>
-            <hr>
             <form @submit.prevent="store">
               <!-- <div class="form-group mb-3"> -->
                 <!-- <label class="form-label">Gambar Barang</label> -->
@@ -17,10 +18,10 @@
               <!-- </div> -->
               <div class="form-group mb-3">
                 <label class="form-label">Kritik</label>
-                <input type="text" class="form-control" v-model="kritik.kritik" placeholder="Masukkan Kritikan Anda" />
+                <input type="text" class="form-control" v-model="kritik.critic" placeholder="Masukkan Kritikan Anda" />
                 <!-- validation -->
-                <div v-if="validation.kritik" class="mt-2 alert alert-danger">
-                  {{ validation.kritik[0] }}
+                <div v-if="validation.critic" class="mt-2 alert alert-danger">
+                  {{ validation.critic[0] }}
                 </div>
               </div>
               <div class="form-group mb-3">
@@ -40,7 +41,7 @@
                 </div>
               </div>
               <div class="form-group mb-3">
-                <label for="content" class="form-label">Harga</label>
+                <label for="content" class="form-label">Email</label>
                 <input class="form-control" type="text" v-model="kritik.email" placeholder="Masukkan Email Anda" />
                 <!-- validation -->
                 <div v-if="validation.email" class="mt-2 alert alert-danger">
@@ -62,9 +63,11 @@ import axios from "axios";
 export default {
   setup() {
     //state departemen
+    const token = localStorage.getItem("token");
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`
     const kritik = reactive({
       //gambar:"",
-      kritik: "",
+      critic: "",
       saran: "",
       nama: "",
       email: "",
@@ -76,14 +79,14 @@ export default {
     //method store
     function store() {
       //let gambar = barang.gambar;
-      let kritik = kritik.kritik;
+      let critic = kritik.critic;
       let saran = kritik.saran;
       let nama = kritik.nama;
       let email = kritik.email;
       axios
-        .post("http://localhost:8000/api/barang", {
+        .post("http://127.0.0.1:8000/api/kritik", {
           //gambar: gambar,
-          kritik: kritik,
+          critic: critic,
           saran: saran,
           nama: nama,
           email: email

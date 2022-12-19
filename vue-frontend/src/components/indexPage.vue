@@ -27,13 +27,12 @@
                 <!-- <div class="alert alert-success" role="alert">
                 Berhasil Login
                 </div> -->
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                <button class="btn btn-primary btn-lg btn-block" id="liveToastBtn" type="submit">Login</button>
             </form>
-            <p><a href="/beranda">test</a></p>
+            <!-- <p><a href="/beranda">test</a></p> -->
             <br>
             <div class="text-center">
               <p>Belum Memiliki Akun? <a href="/register">Register</a></p>
-
             </div>
             <hr class="my-4">
           </div>
@@ -86,6 +85,8 @@
                         //set token
                         localStorage.setItem('token', response.data.access_token);
                         localStorage.setItem('email', response.data.user.email);
+                        localStorage.setItem('id', response.data.user.id);
+
 
                         //redirect ke halaman dashboard
 
@@ -99,11 +100,14 @@
                             });
                         }
 
-                        // router.push({
-                        //     name: 'beranda'
-                        // })
-                    }
+                        // this.$toast.success(
+                        //     "Berhasil Login",
+                        //     {
+                        //     position:
+                        //     "top-right"
+                        //     })
 
+                    }
                     //set state loggedIn to true
                     loginFailed.value = true
 
