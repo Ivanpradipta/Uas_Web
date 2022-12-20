@@ -84,7 +84,7 @@ export default {
       let nama = kritik.nama;
       let email = kritik.email;
       axios
-        .post("http://127.0.0.1:8000/api/kritik", {
+        .post("http://websiteecommerce.site/api/kritik", {
           //gambar: gambar,
           critic: critic,
           saran: saran,

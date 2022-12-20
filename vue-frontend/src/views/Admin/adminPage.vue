@@ -53,7 +53,7 @@ export default {
       //get API from Laravel Backend
       axios.defaults.headers.common.Authorization = `Bearer ${token}`
       axios
-        .get("http://127.0.0.1:8000/api/barang")
+        .get("http://websiteecommerce.site/api/barang")
         .then((response) => {
           //assign state posts with response data
           barangs.value = response.data.data;
@@ -65,7 +65,7 @@ export default {
 
       function hapus(id){
         axios
-        .delete(`http://localhost:8000/api/barang/${id}`)
+        .delete(`http://websiteecommerce.site/api/barang/${id}`)
         .then((response) => {
           //assign state posts with response data
           barangs.value = response.data.data;

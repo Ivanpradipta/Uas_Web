@@ -64,7 +64,7 @@ export default {
     
     onMounted(() => {
         axios.defaults.headers.common.Authorization = `Bearer ${token}`
-      axios.get("http://127.0.0.1:8000/api/user/"+ id)
+      axios.get("http://websiteecommerce.site/api/user/"+ id)
         .then(response => {
           user.name = response.data.data.name
           user.email = response.data.data.email
@@ -79,7 +79,7 @@ export default {
       let email = user.email
       let password = user.password
 
-      axios.put("http://127.0.0.1:8000/api/user/"+ id, {
+      axios.put("http://websiteecommerce.site/api/user/"+ id, {
         name: name,
         email: email,
         password: password

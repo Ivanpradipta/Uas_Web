@@ -76,7 +76,7 @@ export default {
     const route = useRoute();
     
     onMounted(() => {
-      axios.get("http://127.0.0.1:8000/api/barang/"+route.params.id)
+      axios.get("http://websiteecommerce.site/api/barang/"+route.params.id)
         .then(response => {
           barang.nama_barang = response.data.data.nama_barang
           barang.nama_kategori = response.data.data.nama_kategori
@@ -93,7 +93,7 @@ export default {
       let jumlah_barang = barang.jumlah_barang
       let harga_barang = barang.harga_barang
 
-      axios.put("http://127.0.0.1:8000/api/barang/"+route.params.id, {
+      axios.put("http://websiteecommerce.site/api/barang/"+route.params.id, {
         nama_barang: nama_barang,
         nama_kategori: nama_kategori,
         jumlah_barang: jumlah_barang,

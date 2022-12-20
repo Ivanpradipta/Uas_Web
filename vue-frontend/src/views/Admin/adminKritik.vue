@@ -53,7 +53,7 @@ export default {
       //get API from Laravel Backend
       
       axios
-        .get("http://127.0.0.1:8000/api/kritik")
+        .get("http://websiteecommerce.site/api/kritik")
         .then((response) => {
           //assign state posts with response data
           kritiks.value = response.data.data;
@@ -65,7 +65,7 @@ export default {
 
       function hapus(id){
         axios
-        .delete(`http://localhost:8000/api/kritik/${id}`)
+        .delete(`http://websiteecommerce.site/api/kritik/${id}`)
         .then((response) => {
           //assign state posts with response data
           kritiks.value = response.data.data;

@@ -101,7 +101,7 @@
         let alamat = transaksi.alamat;
         let catatan = transaksi.catatan;
         axios
-          .post("http://localhost:8000/api/transaksi", {
+          .post("http://websiteecommerce.site/api/transaksi", {
             //gambar: gambar,
             nama_penerima: nama_penerima,
             nomor_telepon: nomor_telepon,

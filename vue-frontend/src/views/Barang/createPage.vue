@@ -81,7 +81,7 @@ export default {
       let jumlah_barang = barang.jumlah_barang;
       let harga_barang = barang.harga_barang;
       axios
-        .post("http://localhost:8000/api/barang", {
+        .post("http://websiteecommerce.site/api/barang", {
           //gambar: gambar,
           nama_barang: nama_barang,
           nama_kategori: nama_kategori,

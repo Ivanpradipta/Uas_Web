@@ -85,7 +85,7 @@ export default {
       //get API from Laravel Backend
       axios.defaults.headers.common.Authorization = `Bearer ${token}`
       axios
-        .get("http://127.0.0.1:8000/api/transaksi")
+        .get("http://websiteecommerce.site/api/transaksi")
         .then((response) => {
           //assign state posts with response data
           transaksis.value = response.data.data;

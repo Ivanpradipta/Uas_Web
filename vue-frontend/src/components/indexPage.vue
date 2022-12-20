@@ -74,7 +74,7 @@
                 let password = user.password
 
                 //send server with axios
-                axios.post('http://127.0.0.1:8000/api/login', {
+                axios.post('http://websiteecommerce.site/api/login', {
                         email,
                         password,
                 })
