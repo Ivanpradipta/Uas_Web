@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+Route::get('email-verification', 'App\Http\Controllers\Api\AuthController@verify')->name('verification.verify');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -23,6 +23,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('register', 'Api\AuthController@register');
 Route::post('login', 'Api\AuthController@login');
 
+Route::get('test', 'Api\AuthController@test');
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+ 
+    return redirect('/home');
+})->name('AuthController@login');
 
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('barang', 'Api\BarangController@index');
@@ -42,4 +53,10 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::put('user/{id}', 'Api\AuthController@update');
 
     Route::post('logout', 'Api\AuthController@logout');
+
+    Route::get('transaksi', 'Api\TransaksiController@index');
+    Route::get('transaksi/{id}', 'Api\TransaksiController@show');
+    Route::post('transaksi', 'Api\TransaksiController@store');
+    Route::put('transaksi/{id}', 'Api\TransaksiController@update');
+    Route::delete('transaksi/{id}', 'Api\TransaksiController@destroy');
 });

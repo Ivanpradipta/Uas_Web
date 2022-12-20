@@ -130,4 +130,42 @@ class BarangController extends Controller
         ], 400);
     }
 
+
+    public function stok(Request $request, $id)
+    {
+        $barang = Barang::find($id);
+        if(is_null($barang)){
+            return response()->json([
+                'message' => 'Barang Not Found',
+                'data' => null
+            ], 404);
+        }
+
+        $updateData = $request->all();
+        $validate = Validator::make($updateData, [
+            
+            'jumlah_barang' => 'required|numeric',
+            
+        ]);
+
+        if($validate->fails())
+            return response()->json(['message' => $validate->errors()], 400);
+
+        
+        $barang->jumlah_barang = $updateData['jumlah_barang'];
+       
+
+        if($barang->save()){
+            return response()->json([
+                'message' => 'Update Barang Success',
+                'data' => $barang
+            ], 200);
+        }
+
+        return response()->json([
+            'message' => 'Update Barang Failed',
+            'data' => null
+        ], 400);
+    }
+
 }

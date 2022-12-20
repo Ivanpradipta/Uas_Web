@@ -29,7 +29,10 @@
         <h6 class="card-subtitle mb-2 text-muted">{{ barang.nama_kategori }}</h6>
         <div class="card-text">Harga: {{ barang.harga_barang }} <br>
           Stok Tersedia: {{ barang.jumlah_barang }} </div>
-        <button class="btn btn-info">BELI</button>
+        <router-link :to="{ name: 'transaksi.index', params: { id: barang.id } }" class="btn btn-sm btn-primary mr-1">
+            BELI
+        </router-link>
+        
       </div>
     </div>
   </div>

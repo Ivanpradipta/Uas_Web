@@ -8,9 +8,39 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Validator;
 use Illuminate\Support\Facades\Session;
+use Mail;
+use illuminate\Auth\Events\Verified;
+
+
 
 class AuthController extends Controller
 {
+    public function verify(Request $request) {
+        $user = User::findOrFail($request->id);
+
+        if (! hash_equals((string) $request->hash, sha1($user->getEmailForVerification()))) {
+            return response()->json([
+                "message" => "Verif dulu",
+                "success" => false
+            ]);
+        }
+
+        if ($user->hasVerifiedEmail()) {
+            return response()->json([
+                "message" => "Udah verif",
+                "success" => false
+            ]);
+        }
+
+        if ($user->markEmailAsVerified()) {
+            event(new Verified($user));
+        }
+
+        return response()->json([
+            "message" => "Email Berhasil di Verif",
+            "success" => true
+        ]);
+    }
     public function register(Request $request)
     {
         $registrationData = $request->all();
@@ -27,8 +57,10 @@ class AuthController extends Controller
         
         $registrationData['password'] = bcrypt($request->password);
 
+        
         $user = User::create($registrationData);
-
+        $user->sendEmailVerificationNotification();
+        event(new AuthController($user));
         // return response([
         //     'message' => 'registration Success',
         //     'user' => $user
@@ -48,6 +80,7 @@ class AuthController extends Controller
             'email' => 'required|email:rfc,dns',
             'password' => 'required'
         ]);
+        
 
         if($validate->fails())
             // return response(['message' => $validate->errors()], 400);
@@ -58,6 +91,9 @@ class AuthController extends Controller
             return response()->json(['message' => 'Invalid Credentials'], 401);
 
         $user = Auth::user();
+        if (!$user->hasVerifiedEmail()) {
+            return response(['message'=>'Silakan verif dulu di email hehehe :)']);
+        }
         $token = $user->createToken('Authentication Token')->accessToken;
 
         // return response([
@@ -135,4 +171,6 @@ class AuthController extends Controller
             ], 200);
         }
     }
+
+   
 }

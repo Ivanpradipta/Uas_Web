@@ -15,7 +15,7 @@
               <router-link :to="{ name: 'barang.index' }" class="nav-link"><i class="bi bi-bag"></i> &nbsp;  Barang </router-link>
             </li>
             <li class="nav-item">
-              <router-link :to="{ name: 'transaksi.index' }" class="nav-link"><i class="bi bi-wallet"></i> &nbsp; Transaksi</router-link>
+              <router-link :to="{ name: 'list.index' }" class="nav-link"><i class="bi bi-wallet"></i> &nbsp; Transaksi</router-link>
             </li>
             <li class="nav-item">
               <router-link :to="{ name: 'kritik' }" class="nav-link"><i class="bi bi-chat-left-dots"></i> &nbsp; Kritik dan Saran</router-link>

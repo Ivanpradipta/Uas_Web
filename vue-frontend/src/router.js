@@ -36,6 +36,12 @@ const routes = [
                 import('@/views/Transaksi/transaksiPage.vue'),
             },
             {
+                path: "/list",
+                name: "list.index",
+                component: () =>
+                import('@/views/Transaksi/listPage.vue'),
+            },
+            {
                 path: "/user",
                 name: "user",
                 component: () =>
